@@ -3,9 +3,11 @@
 A responsive and user-friendly Weather Application that allows users to check real-time weather information for any city. The app fetches live data using a weather API and displays essential weather details in a clean interface.
 
 📌 Project Overview
+
 This Weather App helps users get instant weather updates by entering a city name. It shows accurate information such as temperature, humidity, and weather conditions, making it useful for daily planning and learning API integration.
 
 ✨ Features
+
 Search weather details by city name
 Displays:
 Current temperature
