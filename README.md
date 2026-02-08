@@ -1,4 +1,5 @@
 🌦️ Weather App
+
 A responsive and user-friendly Weather Application that allows users to check real-time weather information for any city. The app fetches live data using a weather API and displays essential weather details in a clean interface.
 
 📌 Project Overview
