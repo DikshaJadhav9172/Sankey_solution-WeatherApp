@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather App</title>
+
+    <!-- Bootstrap CSS -->
+    <link 
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+      rel="stylesheet"
+    >
+
+    <!-- Font Awesome for better icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Animate.css for animations -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .app-card {
+            max-width: 600px;
+            margin: auto;
+        }
+        .forecast-card {
+            min-width: 120px;
+        }
+        #favList li {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #favList li:hover {
+            background: rgba(25, 118, 210, 0.05) !important;
+        }
+    </style>
+    <!-- Local styles (loads after inline styles so it can override them) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container py-4">
+
+    <!-- Title with animation -->
+    <div class="app-shell">
+        <h1 class="text-center mb-3 text-white animate__animated animate__fadeInDown">
+            <i class="fas fa-cloud-sun"></i> Weather App
+        </h1>
+
+        <!-- Navigation tabs -->
+        <div class="nav-actions animate__animated animate__fadeInDown animate__delay-1s">
+            <button class="nav-tab active" onclick="goHome()">
+                <i class="fas fa-home"></i> Home
+            </button>
+            <button class="nav-tab" onclick="goWeather()">
+                <i class="fas fa-sun"></i> Weather
+            </button>
+            <button class="nav-tab" onclick="goFavorites()">
+                <i class="fas fa-star"></i> Favorites
+            </button>
+        </div>
+
+        <!-- Error -->
+        <p id="error" class="text-danger text-center"></p>
+
+        <!-- HOME SCREEN -->
+        <div id="homeScreen" class="animate__animated animate__fadeIn">
+            <!-- Search -->
+            <div class="card app-card search-card shadow-sm mb-4 animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="card-body">
+                    <h5 class="mb-3"><i class="fas fa-search"></i> Search Weather</h5>
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="cityInput" 
+                            class="form-control"
+                            placeholder="Enter city name..."
+                        >
+                        <button id="searchBtn" class="btn btn-primary">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEATHER SCREEN -->
+        <div id="weatherScreen" class="d-none">
+            <p id="weatherMsg" class="text-center text-white fw-bold"></p>
+            
+            <!-- Current Weather -->
+            <div id="currentWeather" class="card app-card shadow-sm mb-4 d-none">
+            <div class="card-body text-center">
+                <div class="weather-icon mb-3">
+                    <i class="fas fa-cloud-sun fa-4x" id="weatherIcon" style="color: #ffc107; animation: float 3s ease-in-out infinite;"></i>
+                </div>
+                <h3 id="cityName" class="text-primary mb-2"></h3>
+                <h4 id="temperature" style="font-size: 2.5rem; color: #1976d2;"></h4>
+                <p id="condition" class="fs-5 mb-3"></p>
+                
+                <!-- Weather Details -->
+                <div class="weather-details mt-4 mb-3">
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <small>💧 Humidity</small>
+                            <p id="humidity" class="mb-0 fw-bold"></p>
+                        </div>
+                        <div class="col-6">
+                            <small>💨 Wind Speed</small>
+                            <p id="windSpeed" class="mb-0 fw-bold"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="favBtn" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-star"></i> Add to Favorites
+                </button>
+            </div>
+        </div>
+
+            <!-- Forecast -->
+            <h5 class="text-white text-center mb-3">
+                <i class="fas fa-calendar-days"></i> 5-Day Forecast
+            </h5>
+            <div id="forecast" class="d-flex gap-3 flex-wrap justify-content-center"></div>
+        </div>
+
+        <!-- FAVORITES SCREEN -->
+        <div id="favScreen" class="d-none">
+            <!-- Favorites -->
+            <div class="card app-card fav-card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="fav-title">
+                        ❤️ Favorite Cities
+                    </h5>
+                    <ul id="favList" class="list-group list-group-flush"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Your JS files -->
+<script src="api.js"></script>
+<script src="state.js"></script>
+<script src="ui.js"></script>
+<script src="events.js"></script>
+<script src="app.js"></script>
+
+<style>
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+
+</body>
+</html>

@@ -1,0 +1,411 @@
+/* =========================
+   RESET
+========================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+    color: #e5e7eb;
+
+    background: linear-gradient(
+        180deg,
+        #0b1224 0%,
+        #18214a 100%
+    );
+
+    overflow-x: hidden;
+}
+
+/* Subtle ambient glow */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 15%, rgba(99,102,241,0.22), transparent 45%),
+        radial-gradient(circle at 80% 85%, rgba(56,189,248,0.18), transparent 45%);
+    filter: blur(60px);
+    z-index: -1;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.container {
+    padding-top: 32px;
+    animation: fadeIn 0.45s ease;
+}
+
+.app-shell {
+    max-width: 900px;
+    margin: 32px auto 0;
+    padding: 0 16px;
+}
+
+.app-card {
+    max-width: 900px;   /* wider on all screens */
+    margin: auto;
+}
+
+/* =========================
+   GLASS CARD
+========================= */
+.card {
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-radius: 16px;
+    padding: 14px;          /* ⬅ reduced */
+    margin-bottom: 14px;    /* ⬅ reduced */
+
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+}
+
+/* =========================
+   TEXT8
+========================= */
+h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 14px;
+    color: #f8fafc;
+    letter-spacing: -0.4px;
+}
+
+h3, h4, h5 {
+    font-weight: 600;
+    color: #f8fafc;
+    margin-bottom: 0.6rem;
+    font-size: 1.2rem;
+}
+
+p {
+    color: #c7d2fe;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+small {
+    color: #c7d2fe;
+}
+
+/* Temperature 3.2hasis */
+#temperature {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+/* =========================
+   INPUT
+========================= */
+input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.95) !important;
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #1a1a1a !important;
+    font-weight: 500;
+}
+
+input::placeholder {
+    color: rgba(100,100,100,0.8) !important;
+}
+
+input:focus {
+    outline: none;
+    border-color: rgba(56,189,248,0.8);
+    box-shadow: 0 0 0 3px rgba(56,189,248,0.25);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+button {
+    border-radius: 12px;
+    padding: 8px 12px;     /* ⬅ smaller */
+    font-weight: 600;
+    cursor: pointer;
+
+    background: rgba(255,255,255,0.18);
+    color: #f8fafc;
+
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+/* Accent buttons */
+.btn-primary,
+.btn-success,
+.btn-warning {
+    background: rgba(56,189,248,0.28);
+    color: #e0f2fe;
+}
+
+/* =========================
+   SEARCH CARD (HERO)
+========================= */
+.search-card {
+    padding: 22px !important;
+    border-radius: 18px !important;
+}
+
+.search-card h5 {
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+    color: #f8fafc !important;
+}
+
+.search-card .card-body {
+    color: #e0f2fe !important;
+}
+
+/* =========================
+   NAV ACTIONS (TAB BAR)
+========================= */
+.nav-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 24px 0 32px;
+}
+
+.nav-tab {
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-size: 1.05rem;
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #e0f2fe !important;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.nav-tab:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+    transform: translateY(-2px);
+}
+
+.nav-tab.active {
+    background: rgba(56, 189, 248, 0.35) !important;
+    border: 1px solid rgba(56, 189, 248, 0.5) !important;
+    color: #e0f2fe !important;
+}
+
+/* =========================
+   FORECAST
+========================= */
+.forecast {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 6px 2px;
+    scroll-snap-type: x mandatory;
+}
+
+.forecast::-webkit-scrollbar {
+    display: none;
+}
+
+.forecast div {
+    min-width: 140px;
+    max-width: 160px;
+    padding: 12px 10px;
+
+    border-radius: 14px;
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,0.22);
+    text-align: center;
+    scroll-snap-align: start;
+
+    box-shadow: 0 4px 16px rgba(56,189,248,0.08);
+}
+
+.forecast h6 {
+    font-size: 0.75rem;
+    color: #e0e7ff;
+}
+
+.forecast h4 {
+    margin: 4px 0;
+    color: #7dd3fc;
+}
+
+/* Disable hover scale on touch devices */
+@media (hover: none) {
+    .forecast div:hover {
+        transform: none;
+        box-shadow: 0 4px 16px rgba(56,189,248,0.08);
+    }
+}
+
+/* =========================
+   FAVORITES CARD
+========================= */
+.fav-card {
+    max-width: 520px;
+    margin: 40px auto 0;
+}
+
+.fav-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #e0f2fe;
+}
+
+.favorite-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(10px);
+}
+
+.favorite-city {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #f8fafc;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.favorite-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.favorite-actions button {
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: rgba(56, 189, 248, 0.25) !important;
+    border: 1px solid rgba(56, 189, 248, 0.4) !important;
+    color: #e0f2fe !important;
+    font-size: 1.1rem;
+    min-width: 40px;
+}
+
+.favorite-actions button:hover {
+    background: rgba(56, 189, 248, 0.35) !important;
+}
+
+/* =========================
+   FAVORITES
+========================= */
+.list-group-item {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #f8fafc;
+    margin-bottom: 6px;
+    border-radius: 12px;
+}
+
+/* =========================
+   STATES
+========================= */
+.hidden,
+.d-none {
+    display: none;
+}
+
+#error {
+    display: none;
+    width: 100%;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    color: #fca5a5;
+    font-weight: 600;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    animation-delay: 0s !important;
+}
+
+#error.show {
+    display: block;
+}
+
+.error {
+    color: #fca5a5;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   DESKTOP TWEAK
+========================= */
+@media (min-width: 768px) {
+    .app-shell {
+        max-width: 1000px;
+    }
+
+    .app-card {
+        max-width: 1000px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 24px;
+    }
+
+    .nav-tab {
+        padding: 12px 28px;
+        font-size: 1.05rem;
+    }
+
+    .search-card {
+        padding: 28px !important;
+    }
+
+    .search-card h5 {
+        font-size: 1.2rem;
+    }
+}
