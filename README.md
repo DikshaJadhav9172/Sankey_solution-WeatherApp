@@ -30,15 +30,22 @@ This Weather App helps users get instant weather updates by entering a city name
 ▶️ How to Run the Project Locally
 
 1.Clone or download the repository
+
 2.Open the project folder in VS Code
+
 3.Open index.html in any web browser
+
 4.Enter a city name to view weather details
 
 📁 Project Structure
+
 Weather-App/
 │── index.html
+
 │── style.css
+
 │── script.js
+
 │── README.md
 
 👩‍💻 Author
