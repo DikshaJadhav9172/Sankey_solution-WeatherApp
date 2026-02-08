@@ -8,20 +8,20 @@ This Weather App helps users get instant weather updates by entering a city name
 
 ✨ Features
 
-Search weather details by city name
-Displays:
-Current temperature
-Humidity level
-Weather condition (Clear, Cloudy, Rain, etc.)
-Real-time data using Weather API
-Simple, clean, and responsive UI
+1.Search weather details by city name
+2. Displays:
+3.Current temperature
+4.Humidity level
+5.Weather condition (Clear, Cloudy, Rain, etc.)
+6.Real-time data using Weather API
+7.Simple, clean, and responsive UI
 
 🛠️ Technologies Used
 
-HTML – Page structure
-CSS – Styling and responsive design
-JavaScript – Logic and API handling
-Weather API – Fetching real-time weather data
+1. HTML – Page structure
+2. CSS – Styling and responsive design
+3. JavaScript – Logic and API handling
+4. Weather API – Fetching real-time weather data
 
 🚀 Live Demo
 
@@ -29,10 +29,10 @@ Weather API – Fetching real-time weather data
 
 ▶️ How to Run the Project Locally
 
-Clone or download the repository
-Open the project folder in VS Code
-Open index.html in any web browser
-Enter a city name to view weather details
+1.Clone or download the repository
+2.Open the project folder in VS Code
+3.Open index.html in any web browser
+4.Enter a city name to view weather details
 
 📁 Project Structure
 Weather-App/
@@ -40,12 +40,6 @@ Weather-App/
 │── style.css
 │── script.js
 │── README.md
-
-🔮 Future Enhancements
-
-Add 5-day weather forecast
-Auto-detect user location
-Improve UI with animations and icons
 
 👩‍💻 Author
 Diksha Jadhav
